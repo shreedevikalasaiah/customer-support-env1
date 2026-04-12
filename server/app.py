@@ -1,5 +1,7 @@
-import os, sys
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+import os
+import sys
+sys.path.insert(0, "/app")
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional
@@ -36,3 +38,10 @@ def state():
 @app.get("/tasks")
 def list_tasks():
     return env.list_tasks()
+
+def main():
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=7860)
+
+if __name__ == "__main__":
+    main()
