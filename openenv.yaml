@@ -1,0 +1,31 @@
+name: customer-support-env
+version: "1.0.0"
+description: A customer support RL environment.
+author: Shreedevi M K
+license: MIT
+
+tasks:
+  - id: classify_ticket
+    name: Classify Support Ticket
+    difficulty: easy
+    description: Classify a customer ticket into billing, technical, or general.
+    reward_range: [0.0, 1.0]
+  - id: draft_response
+    name: Draft Support Response
+    difficulty: medium
+    description: Draft a helpful reply to a customer ticket.
+    reward_range: [0.0, 1.0]
+  - id: resolve_escalation
+    name: Resolve Escalated Complaint
+    difficulty: hard
+    description: Handle a complex escalated complaint.
+    reward_range: [0.0, 1.0]
+
+server:
+  entrypoint: server.app:app
+  port: 7860
+
+api:
+  reset: POST /reset
+  step:  POST /step
+  state: GET  /state
